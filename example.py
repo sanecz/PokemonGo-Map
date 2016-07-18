@@ -66,6 +66,7 @@ default_step = 0.001
 api_endpoint = None
 pokemons = {}
 gyms = []
+address = None
 pokestops = []
 numbertoteam = {  # At least I'm pretty sure that's it. I could be wrong and then I'd be displaying the wrong owner team of gyms.
     0: 'Gym',
@@ -460,6 +461,11 @@ def get_args():
         action='store_true',
         default=False)
     parser.add_argument(
+        '-ha',
+        '--hostandroid',
+        help='IP of the android',
+        default='')
+    parser.add_argument(
         '-H',
         '--host',
         help='Set web server listening host',
@@ -521,6 +527,10 @@ def main():
     (path, filename) = os.path.split(full_path)
 
     args = get_args()
+
+    if args.hostandroid:
+        global address
+        address = args.hostandroid
 
     if args.auth_service not in ['ptc', 'google']:
         print '[!] Invalid Auth service specified'
@@ -749,6 +759,9 @@ def get_pokemarkers():
             '\' target=\'_blank\' title=\'View in Pokedex\'>#' +
             str(pokemon['id']) + '</a></small> - <b>' + pokemon['name'] +
             '</b></div><center>' + disappears_at + '</center>')
+
+        if address:
+            label += ' <a href=\'http://{}/{}_{}\'>Go!</a>'.format(address, pokemon["lat"], pokemon["lng"])
 
         pokeMarkers.append({
             'icon': 'static/icons/%d.png' % pokemon["id"],

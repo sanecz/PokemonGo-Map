@@ -905,7 +905,7 @@ def get_pokemarkers():
                 'icon': 'static/forts/Pstop.png',
                 'lat': stop[0],
                 'lng': stop[1],
-                'infobox': 'Pokestop', + label
+                'infobox': 'Pokestop' + label,
             })
     return pokeMarkers
 

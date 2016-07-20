@@ -881,7 +881,7 @@ def get_pokemarkers():
             'disappear_time': -1,
             'lat': gym[1],
             'lng': gym[2],
-            'infobox': "<div><center><small>Gym owned by:</small><br><b style='color:" + color + "'>Team " + numbertoteam[gym[0]] + "</b><br><img id='" + numbertoteam[gym[0]] + "' height='100px' src='"+icon+"'><br>Prestige: " + str(gym[3]) + "</center>"
+            'infobox': "<div><center><small>Gym owned by:</small><br><b style='color:" + color + "'>Team " + numbertoteam[gym[0]] + "</b><br><img id='" + numbertoteam[gym[0]] + "' height='100px' src='"+icon+"'><br>Prestige: " + str(gym[3]) + "</center>" + label
         })
     for stop_key in pokestops:
         stop = pokestops[stop_key]
@@ -895,7 +895,7 @@ def get_pokemarkers():
                 'icon': 'static/forts/PstopLured.png',
                 'lat': stop[0],
                 'lng': stop[1],
-                'infobox': 'Lured Pokestop, expires at ' + stop[2],
+                'infobox': 'Lured Pokestop, expires at ' + stop[2] + label,
             })
         else:
             pokeMarkers.append({
@@ -905,7 +905,7 @@ def get_pokemarkers():
                 'icon': 'static/forts/Pstop.png',
                 'lat': stop[0],
                 'lng': stop[1],
-                'infobox': 'Pokestop',
+                'infobox': 'Pokestop', + label
             })
     return pokeMarkers
 

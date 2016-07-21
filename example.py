@@ -871,6 +871,7 @@ def get_pokemarkers():
             color = "rgba(255, 0, 0, .4)"
         if gym[0] == 3:
             color = "rgba(255, 255, 0, .4)"
+        label = ""
         if address:
             label += ' <a href=\'http://{}/{}_{}\'>Go!</a>'.format(address, gym[1], gym[2])
         icon = 'static/forts/'+numbertoteam[gym[0]]+'_large.png'
